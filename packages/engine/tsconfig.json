@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    // Node types are for tests only; src must stay runtime-agnostic (it runs in the browser too).
+    "types": ["node"]
+  },
+  "include": ["src", "test"]
+}
