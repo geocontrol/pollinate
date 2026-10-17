@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { eq, sql } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { createDb, organizations, surveys, surveyVersions, withTenant, type Db } from "../src/index.js";
+import { createDb, organizations, surveys, surveyVersions, withTenant, type Db } from "../src/index";
 import type { SurveyDefinition } from "@pollinate/engine";
 
 // Requires the dev database: `npm run db:up && npm run db:migrate -w @pollinate/db`.

@@ -5,8 +5,8 @@ import {
   safeParseSurveyDefinition,
   validateDefinition,
   type SurveyDefinitionInput,
-} from "../src/index.js";
-import { cloneInput, employeeSurvey } from "./fixtures.js";
+} from "../src/index";
+import { cloneInput, employeeSurvey } from "./fixtures";
 
 const codes = (input: SurveyDefinitionInput) =>
   validateDefinition(parseSurveyDefinition(input)).map((i) => `${i.severity}:${i.code}`);

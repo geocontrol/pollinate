@@ -1,5 +1,5 @@
-import { comparisonsIn } from "./conditions.js";
-import type { Comparison, ComparisonOp, Condition, Question, QuestionType, SurveyDefinition } from "./schema.js";
+import { comparisonsIn } from "./conditions";
+import type { Comparison, ComparisonOp, Condition, Question, QuestionType, SurveyDefinition } from "./schema";
 
 export type DefinitionIssueCode =
   | "no_questions"

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { evaluateCondition, isAnswered, referencedQuestions } from "../src/index.js";
+import { evaluateCondition, isAnswered, referencedQuestions } from "../src/index";
 
 describe("isAnswered", () => {
   it.each([

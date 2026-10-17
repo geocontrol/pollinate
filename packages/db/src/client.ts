@@ -1,10 +1,12 @@
 import { sql } from "drizzle-orm";
 import { drizzle, type NodePgDatabase } from "drizzle-orm/node-postgres";
 import pg from "pg";
-import * as schema from "./schema.js";
+import * as schema from "./schema";
 
 export type Db = NodePgDatabase<typeof schema>;
 export type Tx = Parameters<Parameters<Db["transaction"]>[0]>[0];
+/** Accept either, so helpers compose inside a caller's transaction. */
+export type DbOrTx = Db | Tx;
 
 export function createDb(connectionString: string): { db: Db; pool: pg.Pool } {
   const pool = new pg.Pool({ connectionString });

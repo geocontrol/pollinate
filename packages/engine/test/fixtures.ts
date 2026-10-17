@@ -1,4 +1,4 @@
-import { parseSurveyDefinition, type SurveyDefinitionInput } from "../src/index.js";
+import { parseSurveyDefinition, type SurveyDefinitionInput } from "../src/index";
 
 /**
  * Employee survey exercising every branching feature:

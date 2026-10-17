@@ -1,4 +1,4 @@
-import { isComparison, type AnswerValue, type Answers, type Comparison, type Condition } from "./schema.js";
+import { isComparison, type AnswerValue, type Answers, type Comparison, type Condition } from "./schema";
 
 export function isAnswered(value: AnswerValue | undefined): value is AnswerValue {
   if (value === undefined) return false;

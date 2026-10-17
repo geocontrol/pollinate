@@ -2,6 +2,7 @@ import { sql } from "drizzle-orm";
 import {
   boolean,
   foreignKey,
+  index,
   integer,
   jsonb,
   pgEnum,
@@ -18,8 +19,8 @@ import type { SurveyDefinition } from "@pollinate/engine";
 /*
  * Tenancy convention
  * ------------------
- * Platform tables (organizations, users, memberships) are global and are only
- * touched by the identity/admin modules.
+ * Platform tables (organizations, users, memberships, sessions) are global and
+ * are only touched by the identity/admin modules.
  *
  * Every tenant table:
  *  - has a non-null `organization_id`;
@@ -56,10 +57,27 @@ export const users = pgTable(
     id: uuid("id").primaryKey().defaultRandom(),
     email: text("email").notNull(),
     name: text("name"),
+    /** scrypt hash (see @pollinate/auth). Null for users who have not set a password. */
+    passwordHash: text("password_hash"),
+    /** Can create organisations. Does not grant access to any organisation's data. */
     isPlatformAdmin: boolean("is_platform_admin").notNull().default(false),
     ...timestamps,
   },
   (t) => [uniqueIndex("users_email_lower_idx").on(sql`lower(${t.email})`)],
+);
+
+/** Staff login sessions. The cookie holds a random token; only its SHA-256 is stored. */
+export const sessions = pgTable(
+  "sessions",
+  {
+    id: text("id").primaryKey(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("sessions_user_id_idx").on(t.userId)],
 );
 
 export const membershipRole = pgEnum("membership_role", ["org_admin", "analyst", "viewer"]);

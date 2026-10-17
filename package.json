@@ -15,6 +15,9 @@
     "db:up": "docker compose up -d postgres",
     "db:down": "docker compose down",
     "db:migrate": "npm run db:migrate -w @pollinate/db",
-    "db:generate": "npm run db:generate -w @pollinate/db"
+    "db:generate": "npm run db:generate -w @pollinate/db",
+    "dev": "npm run dev -w @pollinate/web",
+    "test:e2e": "npm run test:e2e -w @pollinate/web",
+    "bootstrap": "npm run bootstrap -w @pollinate/web --"
   }
 }

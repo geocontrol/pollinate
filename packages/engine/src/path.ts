@@ -1,5 +1,5 @@
-import { evaluateCondition, isAnswered } from "./conditions.js";
-import type { Answers, SurveyDefinition } from "./schema.js";
+import { evaluateCondition, isAnswered } from "./conditions";
+import type { Answers, SurveyDefinition } from "./schema";
 
 export interface PathPage {
   pageId: string;

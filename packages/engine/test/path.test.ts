@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { computePath, InvalidDefinitionError, nextPage, parseSurveyDefinition, previousPage } from "../src/index.js";
-import { cloneInput, employeeSurvey } from "./fixtures.js";
+import { computePath, InvalidDefinitionError, nextPage, parseSurveyDefinition, previousPage } from "../src/index";
+import { cloneInput, employeeSurvey } from "./fixtures";
 
 const pageIds = (answers: Record<string, unknown>) =>
   computePath(employeeSurvey, answers as never).pages.map((p) => p.pageId);

@@ -1,6 +1,6 @@
-import { isAnswered } from "./conditions.js";
-import { computePath, type SurveyPath } from "./path.js";
-import type { AnswerValue, Answers, Question, SurveyDefinition } from "./schema.js";
+import { isAnswered } from "./conditions";
+import { computePath, type SurveyPath } from "./path";
+import type { AnswerValue, Answers, Question, SurveyDefinition } from "./schema";
 
 export type AnswerIssueCode =
   | "unknown_question"

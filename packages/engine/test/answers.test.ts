@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { validateAnswerValue, validateResponse, type Question } from "../src/index.js";
-import { employeeSurvey } from "./fixtures.js";
+import { validateAnswerValue, validateResponse, type Question } from "../src/index";
+import { employeeSurvey } from "./fixtures";
 
 const question = (id: string): Question =>
   employeeSurvey.pages.flatMap((p) => p.questions).find((q) => q.id === id)!;
